@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Test del Día</title>
+ <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  ```html
+<!-- Contenedor del quiz -->
+<div class="quiz-container">
+  <!-- Introducción al quiz -->
+  <div class="introduction">
+    <h2>¡Descubre tu superpoder oculto!</h2>
+    <p>Responde estas preguntas para descubrir tu superpoder secreto.</p>
+    <p>¡Buena suerte!</p>
+  </div>
+
+  <!-- Preguntas del quiz -->
+  <div class="questions">
+    <div class="question">
+      <p>Pregunta 1: ¿Cuál es tu pasatiempo favorito?</p>
+      <button class="option-button" value="A">Leer un libro</button>
+      <button class="option-button" value="B">Jugar deportes</button>
+      <button class="option-button" value="C">Escuchar música</button>
+      <button class="option-button" value="D">Pintar o dibujar</button>
+    </div>
+    <div class="question">
+      <p>Pregunta 2: ¿Cuál es tu comida favorita?</p>
+      <button class="option-button" value="A">Pizzas</button>
+      <button class="option-button" value="B">Sushi</button>
+      <button class="option-button" value="C">Tacos</button>
+      <button class="option-button" value="D">Ensaladas</button>
+    </div>
+    <div class="question">
+      <p>Pregunta 3: ¿Cuál es tu lugar favorito para visitar?</p>
+      <button class="option-button" value="A">La playa</button>
+      <button class="option-button" value="B">La montaña</button>
+      <button class="option-button" value="C">La ciudad</button>
+      <button class="option-button" value="D">El bosque</button>
+    </div>
+    <div class="question">
+      <p>Pregunta 4: ¿Cuál es tu habilidad favorita para aprender?</p>
+      <button class="option-button" value="A">Programación</button>
+      <button class="option-button" value="B">Música</button>
+      <button class="option-button" value="C">Idiomas</button>
+      <button class="option-button" value="D">Arte</button>
+    </div>
+    <div class="question">
+      <p>Pregunta 5: ¿Cuál es tu valor favorito en la vida?</p>
+      <button class="option-button" value="A">La honestidad</button>
+      <button class="option-button" value="B">La lealtad</button>
+      <button class="option-button" value="C">La creatividad</button>
+      <button class="option-button" value="D">La perseverancia</button>
+    </div>
+  </div>
+
+  <!-- Botón para finalizar el quiz -->
+  <button class="finish-button">Finalizar</button>
+
+  <!-- Contenedor para mostrar el resultado -->
+  <div class="result-box">
+    <p id="result"></p>
+    <p id="message"></p>
+  </div>
+</div>
+
+<!-- Script para manejar la lógica del quiz -->
+<script>
+  // Obtener todos los botones de opción
+  const optionButtons = document.querySelectorAll('.option-button');
+  const finishButton = document.querySelector('.finish-button');
+  const resultBox = document.querySelector('.result-box');
+  const resultText = document.getElementById('result');
+  const messageText = document.getElementById('message');
+
+  // Inicializar el puntaje
+  let score = 0;
+
+  // Función para manejar el clic en un botón de opción
+  optionButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Aumentar el puntaje según la opción seleccionada
+      if (button.value === 'A') {
+        score += 1;
+      }
+    });
+  });
+
+  // Función para manejar el clic en el botón de finalizar
+  finishButton.addEventListener('click', () => {
+    // Mostrar el resultado y el mensaje
+    resultText.textContent = `Tu puntaje es: ${score} de 5`;
+    if (score >= 3) {
+      messageText.textContent = 'Tu superpoder oculto es la creatividad!';
+    } else {
+      messageText.textContent = 'Tu superpoder oculto es la determinación.';
+    }
+    resultBox.style.display = 'block';
+  });
+</script>
+```
+</body>
+</html>
