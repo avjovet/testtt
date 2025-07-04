@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Test del Día</title>
+ <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  ```html
+<div class="quiz-container">
+  <h2 class="quiz-title">¿Cuál sería tu superpoder ideal si pudieras cambiar el mundo?</h2>
+  <p class="quiz-intro">Responde a las siguientes preguntas para descubrir tu superpoder ideal. ¿Estás listo para cambiar el mundo?</p>
+
+  <div class="question" id="question-1">
+    <p class="question-text">¿Qué te gusta hacer en tu tiempo libre?</p>
+    <div class="options">
+      <button class="option-button" onclick="selectOption(1, 'A')">Leer libros</button>
+      <button class="option-button" onclick="selectOption(1, 'B')">Explorar la naturaleza</button>
+      <button class="option-button" onclick="selectOption(1, 'C')">Ayudar a los demás</button>
+      <button class="option-button" onclick="selectOption(1, 'D')">Inventar cosas</button>
+    </div>
+  </div>
+
+  <div class="question" id="question-2" style="display:none;">
+    <p class="question-text">¿Qué te motiva a tomar acción?</p>
+    <div class="options">
+      <button class="option-button" onclick="selectOption(2, 'A')">La justicia social</button>
+      <button class="option-button" onclick="selectOption(2, 'B')">La protección del medio ambiente</button>
+      <button class="option-button" onclick="selectOption(2, 'C')">La innovación y el progreso</button>
+      <button class="option-button" onclick="selectOption(2, 'D')">La protección de los animales</button>
+    </div>
+  </div>
+
+  <div class="question" id="question-3" style="display:none;">
+    <p class="question-text">¿Cómo te gustaría interactuar con los demás?</p>
+    <div class="options">
+      <button class="option-button" onclick="selectOption(3, 'A')">Como un líder</button>
+      <button class="option-button" onclick="selectOption(3, 'B')">Como un equipo</button>
+      <button class="option-button" onclick="selectOption(3, 'C')">Como un mentor</button>
+      <button class="option-button" onclick="selectOption(3, 'D')">Como un observador</button>
+    </div>
+  </div>
+
+  <div class="question" id="question-4" style="display:none;">
+    <p class="question-text">¿Qué te gusta hacer cuando enfrentas un desafío?</p>
+    <div class="options">
+      <button class="option-button" onclick="selectOption(4, 'A')">Analizar y planificar</button>
+      <button class="option-button" onclick="selectOption(4, 'B')">Actuar de inmediato</button>
+      <button class="option-button" onclick="selectOption(4, 'C')">Buscar ayuda y consejo</button>
+      <button class="option-button" onclick="selectOption(4, 'D')">Enfrentarlo de cabeza</button>
+    </div>
+  </div>
+
+  <div class="question" id="question-5" style="display:none;">
+    <p class="question-text">¿Qué te gustaría lograr con tu superpoder?</p>
+    <div class="options">
+      <button class="option-button" onclick="selectOption(5, 'A')">Cambiar el mundo</button>
+      <button class="option-button" onclick="selectOption(5, 'B')">Ayudar a los demás</button>
+      <button class="option-button" onclick="selectOption(5, 'C')">Proteger el medio ambiente</button>
+      <button class="option-button" onclick="selectOption(5, 'D')">Innovar y crear</button>
+    </div>
+  </div>
+
+  <button class="finish-button" onclick="finishQuiz()" style="display:none;">Finalizar</button>
+
+  <div class="result-box" id="result-box" style="display:none;">
+    <p class="result-text"></p>
+  </div>
+
+  <script>
+    let currentQuestion = 1;
+    let answers = [];
+
+    function selectOption(question, option) {
+      answers.push(option);
+      if (question < 5) {
+        document.getElementById(`question-${question}`).style.display = 'none';
+        document.getElementById(`question-${question + 1}`).style.display = 'block';
+      } else {
+        document.getElementById(`question-${question}`).style.display = 'none';
+        document.querySelector('.finish-button').style.display = 'block';
+      }
+    }
+
+    function finishQuiz() {
+      let score = 0;
+      for (let i = 0; i < answers.length; i++) {
+        if (answers[i] === 'A') {
+          score += 1;
+        }
+      }
+      let result = '';
+      if (score >= 3) {
+        result = 'Tu superpoder ideal es la telequinesis. Puedes mover objetos con tu mente y cambiar el mundo.';
+      } else if (score >= 2) {
+        result = 'Tu superpoder ideal es la velocidad. Puedes correr a velocidades increíbles y ayudar a los demás.';
+      } else {
+        result = 'Tu superpoder ideal es la invisibilidad. Puedes volverte invisible y proteger el medio ambiente.';
+      }
+      document.getElementById('result-box').style.display = 'block';
+      document.querySelector('.result-text').textContent = result;
+    }
+  </script>
+</div>
+```
+</body>
+</html>
